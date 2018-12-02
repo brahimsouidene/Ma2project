@@ -59,9 +59,14 @@ class Colis
     
     
     /**
- * @ORM\ManyToMany(targetEntity="Client", inversedBy="coliss")
- * @ORM\JoinTable(name="client_colis")
- */
+     * @ORM\ManyToMany(targetEntity="Client", inversedBy="coliss", cascade={"persist","merge"})
+     * @ORM\JoinTable(name="colis_client",
+     *                  joinColumns={@ORM\JoinColumn(name="id_colis",
+     *                  referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_client",
+     *                  referencedColumnName="id")})
+     *
+     */
     private $clients;
 
 
@@ -194,5 +199,45 @@ class Colis
     }
 
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->clients = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add client
+     *
+     * @param \PosteTnBundle\Entity\Client $client
+     *
+     * @return Colis
+     */
+    public function addClient(\PosteTnBundle\Entity\Client $client)
+    {
+        $this->clients[] = $client;
+
+        return $this;
+    }
+
+    /**
+     * Remove client
+     *
+     * @param \PosteTnBundle\Entity\Client $client
+     */
+    public function removeClient(\PosteTnBundle\Entity\Client $client)
+    {
+        $this->clients->removeElement($client);
+    }
+
+    /**
+     * Get clients
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+}

@@ -71,8 +71,9 @@ class Client
     private $typeClient;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Colis", mappedBy="clients")
-    */
+     *
+     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="clients", mappedBy="clients", cascade={"persist","merge"})
+     */
     
     private $coliss;
 
@@ -253,5 +254,45 @@ class Client
     }
 
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->coliss = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add coliss
+     *
+     * @param \PosteTnBundle\Entity\Colis $coliss
+     *
+     * @return Client
+     */
+    public function addColiss(\PosteTnBundle\Entity\Colis $coliss)
+    {
+        $this->coliss[] = $coliss;
+
+        return $this;
+    }
+
+    /**
+     * Remove coliss
+     *
+     * @param \PosteTnBundle\Entity\Colis $coliss
+     */
+    public function removeColiss(\PosteTnBundle\Entity\Colis $coliss)
+    {
+        $this->coliss->removeElement($coliss);
+    }
+
+    /**
+     * Get coliss
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getColiss()
+    {
+        return $this->coliss;
+    }
+}
