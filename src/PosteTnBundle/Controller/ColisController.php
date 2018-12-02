@@ -39,7 +39,7 @@ class ColisController extends Controller
      */
     public function newAction(Request $request)
     {
-        $coli = new Coli();
+        $coli = new Colis();
         $form = $this->createForm('PosteTnBundle\Form\ColisType', $coli);
         $form->handleRequest($request);
 

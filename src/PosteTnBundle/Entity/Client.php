@@ -3,7 +3,7 @@
 namespace PosteTnBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Client
  *
@@ -64,9 +64,9 @@ class Client
     private $numeroTele;
     
     /**
-     * @var enum
+     * @var string
      *
-     * @ORM\Column(name="typeClient", type="string", columnDefinition="enum('recepteur','emetteur')")
+     * @ORM\Column(name="typeClient", type="string")
      */
     private $typeClient;
     
@@ -235,22 +235,22 @@ class Client
     /**
      * Get type
      *
-     * @return \enum 
+     * @return string
      */
     function getTypeClient() {
         return $this->typeClient;
     }
     
     /**
-     * Set type
+     * Set typeClient
      *
-     * @param \enum $typeClient
+     * @param string $typeClient
      * 
      * @return client
     */
 
-    function setTypeClient(enum $type) {
-        $this->typeClient = $type;
+    function setTypeClient(string $typeClient) {
+        $this->typeClient = $typeClient;
     }
 
 

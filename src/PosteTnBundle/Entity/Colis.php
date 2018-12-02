@@ -50,12 +50,7 @@ class Colis
      */
     private $dateCreation;
     
-    /**
-     * @var enum
-     *
-     * @ORM\Column(name="etat", type="string", columnDefinition="enum('entrain', 'livree')")
-     */
-    private $etat;
+   
     
     
     /**
@@ -176,29 +171,8 @@ class Colis
         return $this->dateCreation;
     }
     
-    /**
-     * Get etat
-     *
-     * @return \enum 
-     */
-    
-    
-    function getEtat() {
-        return $this->etat;
-    }
-    
-    /**
-     * Set etat
-     *
-     * @param \enum $etat
-     * @return colis
-    */
 
-    function setEtat(enum $etat) {
-        $this->etat = $etat;
-    }
-
-
+    
     /**
      * Constructor
      */
@@ -240,4 +214,5 @@ class Colis
     {
         return $this->clients;
     }
+ 
 }

@@ -13,7 +13,12 @@ class ColisType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('codeColis')->add('poids')->add('prix')->add('dateCreation')->add('etat')->add('clients')        ;
+        $builder
+                ->add('codeColis')
+                ->add('poids')
+                ->add('prix')
+                ->add('dateCreation')
+                ->add('clients')        ;
     }
     
     /**
