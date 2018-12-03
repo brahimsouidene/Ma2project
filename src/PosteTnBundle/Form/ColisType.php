@@ -18,7 +18,7 @@ class ColisType extends AbstractType
                 ->add('poids')
                 ->add('prix')
                 ->add('dateCreation')
-                ->add('clients')        ;
+                ->add('idClient')        ;
     }
     
     /**

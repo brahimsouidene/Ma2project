@@ -17,7 +17,7 @@ class Client
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -63,12 +63,7 @@ class Client
      */
     private $numeroTele;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="typeClient", type="string")
-     */
-    private $typeClient;
+   
     
     /**
      *
@@ -232,26 +227,7 @@ class Client
         return $this->numeroTele;
     }
     
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    function getTypeClient() {
-        return $this->typeClient;
-    }
-    
-    /**
-     * Set typeClient
-     *
-     * @param string $typeClient
-     * 
-     * @return client
-    */
-
-    function setTypeClient(string $typeClient) {
-        $this->typeClient = $typeClient;
-    }
+   
 
 
     /**
@@ -294,5 +270,9 @@ class Client
     public function getColiss()
     {
         return $this->coliss;
+    }
+    public function __toString()
+    {
+         return((string)$this->id);
     }
 }

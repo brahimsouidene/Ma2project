@@ -18,7 +18,7 @@ class Colis
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -50,19 +50,6 @@ class Colis
      */
     private $dateCreation;
     
-   
-    
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Client", inversedBy="coliss", cascade={"persist","merge"})
-     * @ORM\JoinTable(name="colis_client",
-     *                  joinColumns={@ORM\JoinColumn(name="id_colis",
-     *                  referencedColumnName="id")},
-     *                  inverseJoinColumns={@ORM\JoinColumn(name="id_client",
-     *                  referencedColumnName="id")})
-     *
-     */
-    private $clients;
 
 
     /**
@@ -214,5 +201,30 @@ class Colis
     {
         return $this->clients;
     }
+    /**
+     * @param \Client $idClient
+     */
+    public function setIdClient($idClient)
+    {
+        $this->$idClient = $idClient;
+    }
+
+    /**
+     * @return \Client
+     */
+    public function getIdClient()
+    {
+        return $this->idClient;
+    }
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * })
+     */
+    private $idClient;
  
 }

@@ -6,7 +6,7 @@ use PosteTnBundle\Entity\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use PosteTnBundle\Entity\Colis;
 /**
  * Client controller.
  *
@@ -48,7 +48,7 @@ class ClientController extends Controller
             $em->persist($client);
             $em->flush($client);
 
-            return $this->redirectToRoute('client_show', array('id' => $client->getId()));
+            return $this->redirectToRoute('colis_new');
         }
 
         return $this->render('client/new.html.twig', array(
